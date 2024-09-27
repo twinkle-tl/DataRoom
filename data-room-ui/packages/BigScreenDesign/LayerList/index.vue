@@ -5,37 +5,20 @@
 -->
 <template>
   <div class="layer-list-wrap">
-    <draggable
-      v-model="chartList"
-      :options="{ group: 'chart' }"
-      @change="change"
-    >
-      <div
-        v-for="(chart) in chartList"
-        :key="chart.code"
-        :class="{
-          'layer-list-item': true,
-          'layer-list-item-hover': chart.code === hoverCode,
-          'layer-list-item-active': chart.code === activeCode
-        }"
-        @mouseenter.stop="changeHoverCode(chart.code)"
-        @click.stop="changeActiveCode(chart.code)"
-        @contextmenu="onContextmenu($event, chart)"
-      >
+    <draggable v-model="chartList" :options="{ group: 'chart' }" @change="change">
+      <div v-for="(chart) in chartList" :key="chart.code" :class="{
+        'layer-list-item': true,
+        'layer-list-item-hover': chart.code === hoverCode,
+        'layer-list-item-active': chart.code === activeCode
+      }" @mouseenter.stop="changeHoverCode(chart.code)" @click.stop="changeActiveCode(chart.code)"
+        @contextmenu="onContextmenu($event, chart)">
         <div class="layer-list-item-icon el-icon-rank" />
-        <div
-          class="layer-list-item-name"
-          :title="chart.title"
-        >
+        <div class="layer-list-item-name" :title="chart.title">
           {{ chart.title }}
         </div>
       </div>
     </draggable>
-    <el-empty
-      v-if="!chartList.length"
-      :image-size="90"
-      description="未拖拽任何组件"
-    />
+    <el-empty v-if="!chartList.length" :image-size="90" description="未拖拽任何组件" />
   </div>
 </template>
 <script>
@@ -50,7 +33,7 @@ export default {
   },
   mixins: [chartContextMenu],
   props: {},
-  data () {
+  data() {
     return {
     }
   },
@@ -61,15 +44,15 @@ export default {
       activeItemConfig: state => state.bigScreen.activeItemConfig
     }),
     chartList: {
-      get () {
+      get() {
         return this.$store.state.bigScreen.pageInfo.chartList
       },
-      set (val) {
+      set(val) {
         this.changeLayout(val)
       }
     }
   },
-  mounted () {},
+  mounted() { },
   methods: {
     ...mapMutations({
       changeLayout: 'bigScreen/changeLayout',
@@ -77,10 +60,10 @@ export default {
       changeHoverCode: 'bigScreen/changeHoverCode',
       changeActiveCode: 'bigScreen/changeActiveCode'
     }),
-    change (e) {
+    change(e) {
       this.changeZIndex(this.chartList)
     },
-    changeActive (code) {
+    changeActive(code) {
       this.changeActiveCode(code)
       this.$emit('openRightPanel')
     }
@@ -113,7 +96,7 @@ export default {
 
     &-name {
       font-size: 14px;
-      color: #fff;
+      color: var(--bs-el-text);
       // 超出省略
       overflow: hidden;
       text-overflow: ellipsis;
@@ -122,9 +105,17 @@ export default {
 
     &-hover {
       background-color: #007aff80;
+      color: #fff;
+      .layer-list-item-name {
+        color: #fff;
+      }
     }
     &-active {
       background-color: #007aff;
+      color: #fff;
+      .layer-list-item-name {
+        color: #fff;
+      }
     }
   }
 }

@@ -400,7 +400,6 @@ export default {
           title: '注意',
           dangerouslyUseHTMLString: true,
           message: htmlStr,
-          customClass: 'ds-el-notify',
           type: 'warning'
         })
       }
@@ -533,7 +532,6 @@ export default {
   ::v-deep .el-radio__label {
     background: var(--bs-el-background-1);
     color: var(--bs-el-text);
-    border: 0 !important;
   }
 
   ::v-deep .el-form-item__label {
@@ -695,20 +693,4 @@ export default {
   overflow-y: auto;
 }
 
-</style>
-<style lang="scss">
-//修改notify的样式
-.ds-el-notify {
-  background-color: var(--bs-el-background-1)!important;
-  border: var(--bs-el-border)!important;
-  .el-notification__title{
-    color: #fff!important;
-  }
-  .el-notification__content{
-    color: #fff!important;
-  }
-  .el-notification__closeBtn{
-    color: #fff!important;
-  }
-}
 </style>

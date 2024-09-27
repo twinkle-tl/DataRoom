@@ -276,7 +276,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/style/bsTheme.scss';
 .catalog-edit-wrap{
  ::v-deep .el-dialog__body{
     min-height: 300px !important;
@@ -292,15 +291,6 @@ export default {
     align-items: center;
     justify-content: flex-start;
     margin-bottom: 12px;
-
-    .el-input {
-      width: 200px;
-      margin-right: 20px;
-
-      ::v-deep .el-input__inner {
-        background-color: #151A26 !important;
-      }
-    }
   }
 }
 </style>

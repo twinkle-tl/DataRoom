@@ -372,12 +372,8 @@ export default {
   .page-left {
     box-sizing: border-box;
 
-    >* {
-      color: #fff;
-    }
-
     .iconfont-bigscreen {
-      color: #fff;
+      color: var(--bs-el-text);
     }
 
     .flexible {
@@ -564,7 +560,7 @@ export default {
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        color: #bcc9d4;
+        color: var(--bs-el-text);
 
         .menu-icon {
           height: 20px;

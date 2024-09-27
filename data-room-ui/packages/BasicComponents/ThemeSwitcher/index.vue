@@ -89,7 +89,6 @@ export default {
           title: '注意',
           dangerouslyUseHTMLString: true,
           message: htmlStr,
-          customClass: 'ds-el-notify',
           duration: 5000,
           type: 'warning'
         })

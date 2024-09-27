@@ -1,18 +1,10 @@
 <template>
-  <div
-    class="head-btn"
-    :class="{
-      'head-btn-disabled': disabled
-    }"
-    @click="$emit('click')"
-  >
+  <div class="head-btn" :class="{
+    'head-btn-disabled': disabled
+  }" @click="$emit('click')">
     <slot />
 
-    <i
-      v-if="loading"
-      class="el-icon el-icon-loading"
-      style="padding-left: 4px;"
-    />
+    <i v-if="loading" class="el-icon el-icon-loading" style="padding-left: 4px;" />
   </div>
 </template>
 <script>
@@ -28,7 +20,7 @@ export default {
     }
   },
   methods: {
-    click (e) {
+    click(e) {
       e.preventDefault()
       if (!this.loading) {
         this.$emit('click')
@@ -41,7 +33,7 @@ export default {
 <style lang="scss" scoped>
 .head-btn {
   display: flex;
-  background-color: #303640;
+  background-color: rgba(255, 255, 255, 0.1);
   cursor: pointer;
   width: auto;
   justify-content: center;
@@ -51,16 +43,12 @@ export default {
   font-size: 12px;
 
   &:hover {
-    background-color: #414750;
+    background-color: rgba(255, 255, 255, 0.3);
   }
 
   &-disabled {
     cursor: not-allowed;
-    background-color: #303640;
-    color: #999;
-    &:hover {
-      background-color: #303640;
-    }
+    color: #ccc;
   }
 }
 </style>

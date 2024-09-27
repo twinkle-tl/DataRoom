@@ -814,15 +814,6 @@ export default {
 .bs-pagination {
   margin-top: 4px;
   padding-right: 16px;
-  // padding: 0 !important;
-  // right: 16px !important;
-  // bottom: 16px !important;
-  // position: absolute !important;
-  ::v-deep .el-input__inner {
-    width: 110px !important;
-    border:none;
-    background: var(--bs-el-background-1);
-  }
 }
 
 .bs-container .inner-container .el-form .filter-item {
@@ -871,7 +862,7 @@ export default {
   }
 
   li:hover {
-    background-color: var(--bs-el-background-3);
+    background-color: rgba(var(--bs-el-color-primary-active), 0.1);
 
     span {
       color: var(--bs-el-color-primary);

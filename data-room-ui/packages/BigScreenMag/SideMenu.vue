@@ -1,46 +1,23 @@
 <template>
   <div class="side-catalog-wrap">
     <el-scrollbar class="side-catalog-box">
-      <div
-        class="side-catalog-all side-catalog-item"
-        :class="{'active-catalog':isAll}"
-        @click="clickAllCatalog()"
-      >
+      <div class="side-catalog-all side-catalog-item" :class="{ 'active-catalog': isAll }" @click="clickAllCatalog()">
         全部
       </div>
-      <div
-        v-for="(catalog,index) in catalogList"
-        :key="index"
-        class="side-catalog-item"
-        :class="{'active-catalog':activeCatalog.code === catalog.code && !isAll}"
-        @mouseenter="mouseenter(catalog.code)"
-        @mouseleave="mouseleave"
-        @click="clickCatalog(catalog)"
-      >
+      <div v-for="(catalog, index) in catalogList" :key="index" class="side-catalog-item"
+        :class="{ 'active-catalog': activeCatalog.code === catalog.code && !isAll }" @mouseenter="mouseenter(catalog.code)"
+        @mouseleave="mouseleave" @click="clickCatalog(catalog)">
         <span class="catalog-name">{{ catalog.name }}</span>
         <el-dropdown
-          :class="{'dropdown-show':(showDropdown && hoverItem === catalog.code) || activeCatalog.code === catalog.code}"
-          class="page-list-dropdown"
-          placement="bottom-start"
-          node-key="id"
-          trigger="click"
-        >
+          :class="{ 'dropdown-show': (showDropdown && hoverItem === catalog.code) || activeCatalog.code === catalog.code }"
+          class="page-list-dropdown" placement="bottom-start" node-key="id" trigger="click">
           <span class="el-dropdown-link menu-dropdown-link">
-            <i
-              class="el-icon-more"
-              :class="{'active-icon-more':activeCatalog.code === catalog.code && !isAll}"
-            />
-            <el-dropdown-menu
-              slot="dropdown"
-              class="dropdown-menu-box bs-el-dropdown-menu"
-            >
+            <i class="el-icon-more" :class="{ 'active-icon-more': activeCatalog.code === catalog.code && !isAll }" />
+            <el-dropdown-menu slot="dropdown" class="dropdown-menu-box bs-el-dropdown-menu">
               <el-dropdown-item @click.native="catalogEdit(catalog)">
                 编辑
               </el-dropdown-item>
-              <el-dropdown-item
-                class="delete-item"
-                @click.native="catalogDel(catalog)"
-              >
+              <el-dropdown-item class="delete-item" @click.native="catalogDel(catalog)">
                 删除
               </el-dropdown-item>
             </el-dropdown-menu>
@@ -48,65 +25,27 @@
         </el-dropdown>
       </div>
     </el-scrollbar>
-    <div
-      class="add-catalog-box"
-      @click="catalogAdd"
-    >
+    <div class="add-catalog-box" @click="catalogAdd">
       <i class="el-icon-plus" />
       <div>新增分组</div>
     </div>
     <!-- 新增或编辑目录弹窗 -->
-    <el-dialog
-      :title="currentCatalog.code ? '编辑分组':'新增分组'"
-      :visible.sync="catalogVisible"
-      custom-class="bs-el-dialog"
-      width="30%"
-      class="bs-dialog-wrap bs-el-dialog"
-      @close="handleClose"
-    >
-      <el-form
-        ref="form"
-        :model="currentCatalog"
-        label-width="80px"
-        :rules="formRules"
-        class="bs-el-form"
-      >
-        <el-form-item
-          label="分组名称"
-          prop="name"
-        >
-          <el-input
-            v-model.trim="currentCatalog.name"
-            class="bs-el-input"
-            clearable
-          />
+    <el-dialog :title="currentCatalog.code ? '编辑分组' : '新增分组'" :visible.sync="catalogVisible" custom-class="bs-el-dialog"
+      width="30%" class="bs-dialog-wrap bs-el-dialog" @close="handleClose">
+      <el-form ref="form" :model="currentCatalog" label-width="80px" :rules="formRules" class="bs-el-form">
+        <el-form-item label="分组名称" prop="name">
+          <el-input v-model.trim="currentCatalog.name" class="bs-el-input" clearable />
         </el-form-item>
-        <el-form-item
-          label="排序"
-        >
-          <el-input-number
-            v-model="currentCatalog.orderNum"
-            :min="0"
-            :max="30000"
-            controls-position="right"
-            class="bs-el-input-number"
-          />
+        <el-form-item label="排序">
+          <el-input-number v-model="currentCatalog.orderNum" :min="0" :max="30000" controls-position="right"
+            class="bs-el-input-number" />
         </el-form-item>
       </el-form>
-      <span
-        slot="footer"
-        class="dialog-footer"
-      >
-        <el-button
-          class="bs-el-button-default"
-          @click="catalogVisible = false"
-        >
+      <span slot="footer" class="dialog-footer">
+        <el-button class="bs-el-button-default" @click="catalogVisible = false">
           取消
         </el-button>
-        <el-button
-          type="primary"
-          @click="addOrEditCatalog"
-        >
+        <el-button type="primary" @click="addOrEditCatalog">
           确定
         </el-button>
       </span>
@@ -116,14 +55,14 @@
 <script>
 import cloneDeep from 'lodash/cloneDeep'
 export default {
-  components: { },
+  components: {},
   props: {
     type: {
       type: String,
       default: 'bigScreenCatalog'
     }
   },
-  data () {
+  data() {
     const validateName = (rule, value, callback) => {
       this.$dataRoomAxios.post('/bigScreen/type/nameRepeat', {
         id: this.currentCatalog.id,
@@ -162,36 +101,36 @@ export default {
       }
     }
   },
-  mounted () {
+  mounted() {
     this.getCatalogList()
   },
   methods: {
-    mouseenter (code) {
+    mouseenter(code) {
       this.showDropdown = true
       this.hoverItem = code
     },
-    mouseleave () {
+    mouseleave() {
       this.showDropdown = false
     },
     // 点击全部
-    clickAllCatalog () {
+    clickAllCatalog() {
       this.isAll = true
       this.$emit('getPageInfo', { isAll: true, page: { id: '', code: '', name: '' } })
     },
     // 点击目录
-    clickCatalog (catalog) {
+    clickCatalog(catalog) {
       this.currentCatalog = cloneDeep(catalog)
       this.activeCatalog = cloneDeep(catalog)
       this.isAll = false
       this.$emit('getPageInfo', { isAll: false, page: catalog })
     },
     // 关闭目录弹窗
-    handleClose () {
+    handleClose() {
       this.catalogVisible = false
       this.$refs.form.clearValidate()
     },
     // 新增编辑目录（点击确定）
-    addOrEditCatalog () {
+    addOrEditCatalog() {
       this.$refs.form.validate(async (valid) => {
         if (!valid) {
           return
@@ -202,13 +141,13 @@ export default {
               ...this.currentCatalog,
               type: this.type || 'bigScreenCatalog'
             }).then(data => {
-            this.catalogVisible = false
-            this.getCatalogList()
-            this.flag = true
-            // 关闭页面菜单的弹窗
-            this.closePageMenuDialog()
-          }).catch(() => {
-          })
+              this.catalogVisible = false
+              this.getCatalogList()
+              this.flag = true
+              // 关闭页面菜单的弹窗
+              this.closePageMenuDialog()
+            }).catch(() => {
+            })
         } else {
           this.$dataRoomAxios.post('/bigScreen/type/update', { ...this.currentCatalog, type: this.type || 'bigScreenCatalog' }).then(data => {
             this.catalogVisible = false
@@ -219,7 +158,7 @@ export default {
       })
     },
     // 新增目录
-    catalogAdd () {
+    catalogAdd() {
       this.catalogVisible = true
       this.currentCatalog = { // 选中目录
         name: '',
@@ -229,12 +168,12 @@ export default {
       }
     },
     // 编辑目录
-    catalogEdit () {
+    catalogEdit() {
       this.currentCatalog = cloneDeep(this.currentCatalog)
       this.catalogVisible = true
     },
     // 删除目录
-    catalogDel (catalog) {
+    catalogDel(catalog) {
       this.$confirm('分组删除后，分组下的大屏会被归纳至全部中，确定删除该分组？', '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
@@ -256,7 +195,7 @@ export default {
       }).catch()
     },
     // 获取目录的列表
-    getCatalogList () {
+    getCatalogList() {
       this.pageLoading = true
       this.$dataRoomAxios.get(`/bigScreen/type/list/${this.type}`).then(data => {
         this.catalogList = data
@@ -269,96 +208,5 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  @import '../assets/style/bsTheme.scss';
-  .side-catalog-wrap{
-    // padding-top: 16px;
-    width: 220px;
-    // height: 100%;
-    // margin-bottom: 16px;
-    box-sizing: border-box;
-    color: var(--bs-el-title);
-    background-color: var(--bs-background-2);
-    .side-catalog-box{
-      height: calc(100% - 50px);
-      overflow-y: auto;
-      .side-catalog-all{
-        font-weight: bold;
-      }
-      .side-catalog-item{
-        width: 100%;
-        padding: 0px 16px;
-        line-height: 36px;
-        display: flex;
-        justify-content: space-between;
-        &:hover{
-          cursor: pointer;
-        }
-        .el-icon-more{
-          transform: rotate(90deg);
-          color: var(--bs-el-title);
-          font-weight: 400;
-        }
-        .active-icon-more{
-          color:var(--bs-el-text);
-        }
-        .catalog-name{
-          overflow:hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          -o-text-overflow:ellipsis;
-        }
-        .page-list-dropdown{
-          opacity: 0;
-        }
-        .dropdown-show{
-          opacity: 1;
-        }
-      }
-      /*菜单激活时的样式*/
-      .active-catalog{
-        position: relative;
-        background-color: rgba(var(--bs-el-color-primary-active), 0.4);
-        color: var(--bs-el-text);
-        &::before{
-          content: '';
-          position: absolute;
-          left: 0;
-          width: 4px;
-          height: 36px;
-          background-color: var(--bs-el-color-primary);
-        }
-      }
-    }
-    .add-catalog-box{
-      padding: 10px 0;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 10px;
-      margin: 0 8px;
-      &:hover{
-        background-color: var(--bs-background-1);
-        cursor: pointer;
-        color: var(--bs-el-text);;
-      }
-      .el-icon-plus{
-        padding: 0 5px;
-      }
-    }
-
-  }
-  .dropdown-menu-box{
-    left: 50%;
-    transform: translateX(-40%);
-    width: 100px!important;
-    ::v-deep .el-dropdown-menu__item{
-      text-align: center;
-      padding: 5px;
-    }
-    ::v-deep .popper__arrow{
-      left: 50% !important;
-      transform: translateX(-50%) !important;
-    }
-  }
+@import '../assets/style/layout.scss';
 </style>

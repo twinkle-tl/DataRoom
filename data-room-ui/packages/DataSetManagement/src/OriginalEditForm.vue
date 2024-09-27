@@ -1135,11 +1135,6 @@ export default {
 .bs-pagination {
   padding: 16px !important;
   position: unset !important;
-  ::v-deep .el-input__inner {
-    width: 110px !important;
-    border: none;
-    background: var(--bs-el-background-1);
-  }
 }
 
 // 修改el-select样式 loading 位置

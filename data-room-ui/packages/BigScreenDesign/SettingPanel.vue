@@ -206,9 +206,9 @@ export default {
       }
     }
 
-    >* {
-      color: #fff;
-    }
+    // >* {
+    //   color: #fff;
+    // }
 
     // 左侧居中伸缩图标
     &::after {

@@ -564,7 +564,6 @@ export default {
 
     .drag-wrap {
       display: flex;
-      background-color: #1d1e20;
       height: calc(100vh - 40px);
       // overflow: hidden;
 
@@ -621,7 +620,7 @@ export default {
   height: 30px;
   width: 150px;
   font-size: 12px;
-  color: var(--bs-el-title);
+  color: #fff;
   cursor: pointer;
   span {
     user-select: none;

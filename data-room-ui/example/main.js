@@ -47,13 +47,13 @@ registerConfig(
       fileUrlPrefix: window.CONFIG?.fileUrlPrefix ? window.CONFIG.fileUrlPrefix : window.CONFIG?.baseUrl + '/static'
     },
     customTheme: {
-      '--bs-background-1': '#151a26', // 整体背景色
-      '--bs-background-2': '#232832', // 布局背景色
-      '--bs-el-background-1': '#151A26', // 组件背景色，输入框...
-      '--bs-el-background-2': '#35393F', // 组件背景色，按钮、分页、加载...
-      '--bs-el-background-3': '#303640', // 组件背景色，表格头部、下拉框hover...
-      '--bs-el-title': '#ffffff', // 标题字体颜色
-      '--bs-el-text': '#ffffff', // 一般字体颜色
+      '--bs-background-1': '#f5f7fa', // 整体背景色
+      '--bs-background-2': '#fff', // 布局背景色
+      '--bs-el-background-1': '#fff', // 组件背景色，输入框...
+      '--bs-el-background-2': '#f4f4f5', // 组件背景色，按钮、分页、加载...
+      '--bs-el-background-3': '#e5e7e9', // 组件背景色，表格头部、下拉框hover...
+      '--bs-el-title': '#36474f', // 标题字体颜色
+      '--bs-el-text': '#606266', // 一般字体颜色
       '--bs-el-color-primary': '#409EFF', // 样式主题色
       '--bs-el-color-primary-active': '64, 158, 255', // 主要激活 => rgba(64, 158, 255, 1) = #409EFF
       '--bs-el-border': 'transparent' // 边框颜色

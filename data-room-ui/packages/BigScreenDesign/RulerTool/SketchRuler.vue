@@ -491,7 +491,7 @@ export default {
   z-index: 998
 }
 .grid-bg {
-  background-color: #2a2e33 !important;
+  background-color: #E6E6E6 !important;
   background-image: url(./images/canvas-bg.png);
     background-repeat: repeat;
     word-spacing: 10px;
@@ -505,7 +505,7 @@ export default {
       }
 
       .value {
-        color: var(--bs-el-text);
+        color: #fff;
       }
     }
   }

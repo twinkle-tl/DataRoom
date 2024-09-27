@@ -1,7 +1,7 @@
 window.ENV = 'development'
 var developmentConfig = {
-  baseURL: 'http://gcpaas.gccloud.com/bigScreenServer',
-  fileUrlPrefix: 'http://gcpaas.gccloud.com/bigScreenServer' + '/static'
+  baseURL: 'http://192.168.30.108:8083',
+  fileUrlPrefix: 'http://192.168.30.108:8083' + '/static'
 }
 // 必须的
 window.CONFIG={}

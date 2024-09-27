@@ -161,7 +161,6 @@ export default {
     height: 150px;
     background-image: url('./images/nav_img.png');
     background-size: 100% 150px;
-    background-color: #0D0F12;
     background-position: center right;
 
     .logo-title {

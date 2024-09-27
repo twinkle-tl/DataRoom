@@ -556,18 +556,10 @@ export default {
     .el-input {
       width: 200px;
       margin-right: 20px;
-
-      ::v-deep .el-input__inner {
-        background-color: var(--bs-background-1) !important;
-      }
     }
 
     .el-select {
       margin-right: 20px;
-
-      ::v-deep .el-input__inner {
-        background-color: var(--bs-background-1) !important;
-      }
     }
   }
 
@@ -649,10 +641,6 @@ export default {
             align-items: center;
             justify-content: center;
           }
-
-          ::v-deep .el-image__error {
-            background-color: #1d1d1d;
-          }
         }
 
         .big-screen-bottom {
@@ -709,14 +697,6 @@ export default {
     margin-top: 16px;
     position: absolute;
     width: 100%;
-  }
-}
-
-.bs-pagination {
-  ::v-deep .el-input__inner {
-    width: 110px !important;
-    border: none;
-    background: var(--bs-el-background-1);
   }
 }
 

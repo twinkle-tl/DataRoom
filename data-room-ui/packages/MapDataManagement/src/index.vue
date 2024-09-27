@@ -390,7 +390,6 @@ export default {
         title: '推荐',
         dangerouslyUseHTMLString: true,
         message: htmlStr,
-        customClass: 'ds-el-notify',
         type: 'warning',
         duration: 5000
       })
@@ -506,18 +505,5 @@ export default {
 }
 </style>
 <style lang="scss">
-//修改notify的样式
-.ds-el-notify {
-  background-color: var(--bs-el-background-1)!important;
-  border: var(--bs-el-border)!important;
-  .el-notification__title{
-    color: #fff!important;
-  }
-  .el-notification__content{
-    color: #fff!important;
-  }
-  .el-notification__closeBtn{
-    color: #fff!important;
-  }
-}
+
 </style>

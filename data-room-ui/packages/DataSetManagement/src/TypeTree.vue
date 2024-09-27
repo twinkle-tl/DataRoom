@@ -523,14 +523,13 @@ export default {
     }
 
     .curSelectedNode {
-      background: var(--bs-el-background-3) !important;
-      background-color: var(--bs-el-background-3) !important;
+      background-color: rgba(var(--bs-el-color-primary-active), 0.1) !important;
     }
 
-    a:hover {
-      background: var(--bs-el-background-3) !important;
-      background-color: var(--bs-el-background-3) !important;
-    }
+    // a:hover {
+    //   background: var(--bs-el-background-3) !important;
+    //   background-color: var(--bs-el-background-3) !important;
+    // }
   }
 ::v-deep .el-tabs__nav-wrap::after {
   display: none !important;
