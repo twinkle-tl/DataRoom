@@ -1,0 +1,19 @@
+spring:
+  servlet:
+    multipart:
+      # 配置上传下载文件的最大值
+      max-file-size: 500MB
+      max-request-size: 500MB
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.33:30333/ez_bi?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&allowMultiQueries=true&rewriteBatchedStatements=true
+    username: root
+    password: 123456
+gc:
+  starter:
+    file:
+      # 一个存储文件的绝对路径，需要有写入权限
+      basePath: D:\kdgc\后端静态资源
+      # 启动服务的访问地址
+      urlPrefix: http://127.0.0.1:${server.port}${server.servlet.context-path}/static/
